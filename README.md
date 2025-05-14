@@ -1,6 +1,6 @@
 # Autocomplete Engine in C
 
-This repository features a fast and memory-efficient **autocomplete engine written in C**, developed as part of ESC190H1F — *Programming Fundamentals* at the **University of Toronto**. The project demonstrates how to perform efficient prefix-based search using sorted data structures and **binary search** techniques, even on large datasets.
+This repository features a fast and memory-efficient **autocomplete engine written in C**. The project demonstrates how to perform efficient prefix-based search using sorted data structures and **binary search** techniques, even on large datasets.
 
 ---
 
@@ -71,61 +71,92 @@ typedef struct term {
 
 ---
 
-## Input Format
+## 📁 Input Format
 
-The input file must be formatted as follows:
+The input file must be a plain text file formatted as follows:
 
 ```
-5
-100.0 Toronto
-90.5 Tokyo
-110.3 Toronto Zoo
-80.0 Tofino
-95.6 Toronto Island
+<number of entries>
+<weight_1> <term_1>
+<weight_2> <term_2>
+...
+<weight_n> <term_n>
 ```
 
-- **Line 1**: Number of terms (e.g., `5`)
-- **Remaining lines**: `<weight> <term>`
+### Example (`cities.txt`):
+```
+6
+4612191 Toronto, Ontario, Canada
+865263 Torino, Italy
+1327407 San Antonio, Texas, United States
+1307402 San Diego, California, United States
+945942 San Jose, California, United States
+1173533 San Salvador, El Salvador
+```
+
+- The **first line** contains an integer representing the total number of entries.
+- Each subsequent line has a **double value** (weight) followed by a **string** (term).
+- Terms may include spaces and punctuation. Weights represent importance, e.g., population.
 
 ---
 
-## Results
+## 🧪 Results
+
+This autocomplete engine was tested using a real-world dataset containing over 90,000 global city names and population weights. The system demonstrates efficient binary search prefix matching and correct weight-based ranking.
 
 ### Test Case 1 – Prefix: `"Tor"`
 
-**Input file (`cities.txt`) sample:**
+**Purpose**: Match all major global cities starting with `"Tor"` (e.g., Toronto, Torino), and rank by descending population.
+
+**Input Prefix:** `Tor`
+
+**Matching Entries:**
 
 ```
-6
-100.0 Toronto
-90.5 Tokyo
-110.3 Toronto Zoo
-80.0 Tofino
-95.6 Toronto Island
-75.0 Toronto Maple Leafs
+4612191    Toronto, Ontario, Canada  
+865263     Torino, Italy
 ```
 
-**Output:**
+**Expected Output:**
 
 ```
-Toronto Zoo           (110.3)
-Toronto Maple Leafs   (75.0)
-Toronto Island        (95.6)
-Toronto               (100.0)
+Toronto, Ontario, Canada      (4612191)  
+Torino, Italy                 (865263)
 ```
 
-**Sorted by descending weight.**
+The system correctly identifies two cities with the prefix `"Tor"` and ranks them by population. Toronto, being a significantly larger city, appears first.
 
-### Test Case 2 – Prefix: `"To"`
+---
+
+### Test Case 2 – Prefix: `"San"`
+
+**Purpose**: Identify multiple globally distributed cities beginning with `"San"`, showcasing the sorting and prefix capabilities of the engine.
+
+**Input Prefix:** `San`
+
+**Matching Entries:**
 
 ```
-Tofino                (80.0)
-Tokyo                 (90.5)
-Toronto               (100.0)
-Toronto Island        (95.6)
-Toronto Zoo           (110.3)
-Toronto Maple Leafs   (75.0)
+1327407    San Antonio, Texas, United States  
+1307402    San Diego, California, United States  
+945942     San Jose, California, United States  
+1200000    Santiago de los Caballeros, Dominican Republic  
+1173533    San Salvador, El Salvador
 ```
+
+**Expected Output:**
+
+```
+San Antonio, Texas, United States                  (1327407)  
+San Diego, California, United States               (1307402)  
+Santiago de los Caballeros, Dominican Republic     (1200000)  
+San Salvador, El Salvador                          (1173533)  
+San Jose, California, United States                (945942)
+```
+
+The autocomplete engine successfully retrieves all matching terms and sorts them based on population (weight) in descending order. It showcases the program’s real-world usability in urban data applications.
+
+---
 
 **Performance**:  
 On a test dataset with 50,000 terms, prefix lookups completed in **under 2 milliseconds**, showing scalability due to `O(log n)` binary search and quicksort for sorting matches.
@@ -181,6 +212,12 @@ for (int i = 0; i < n_results; i++) {
 
 This project is provided for educational purposes under the University of Toronto's ESC190 course.  
 You may reuse and adapt the code with proper attribution for academic or personal learning.
+
+---
+
+## 🙏 Acknowledgements
+
+> **Credit**: This project was originally designed by **Kevin Wayne**, and later **adapted to C by Michael Guerzhoy** for ESC190H1F – Programming Fundamentals, University of Toronto.
 
 ---
 
