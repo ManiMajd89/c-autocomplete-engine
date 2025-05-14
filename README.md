@@ -210,7 +210,11 @@ for (int i = 0; i < n_results; i++) {
 
 ## 🙏 Acknowledgements
 
-> **Credit**: This project was originally designed by **Kevin Wayne**, and later **adapted to C by Michael Guerzhoy** for ESC190H1F – Programming Fundamentals, University of Toronto.
+> **Assignment Design Credit**:  
+> This project was originally designed by Kevin Wayne, and adapted to C by Michael Guerzhoy for the ESC190H1F course at the University of Toronto.
+
+> **Code Implementation**:  
+> All code in this repository was written by **Mani Majd**. 
 
 ---
 
