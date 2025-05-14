@@ -71,7 +71,7 @@ typedef struct term {
 
 ---
 
-## 📁 Input Format
+## Input Format
 
 The input file must be a plain text file formatted as follows:
 
@@ -100,7 +100,7 @@ The input file must be a plain text file formatted as follows:
 
 ---
 
-## 🧪 Results
+## Results
 
 This autocomplete engine was tested using a real-world dataset containing over 90,000 global city names and population weights. The system demonstrates efficient binary search prefix matching and correct weight-based ranking.
 
@@ -208,7 +208,7 @@ for (int i = 0; i < n_results; i++) {
 
 ---
 
-## 🙏 Acknowledgements
+## Acknowledgements
 
 > **Assignment Design Credit**:  
 > This project was originally designed by Kevin Wayne, and adapted to C by Michael Guerzhoy for the ESC190H1F course at the University of Toronto.
