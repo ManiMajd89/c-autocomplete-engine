@@ -208,13 +208,6 @@ for (int i = 0; i < n_results; i++) {
 
 ---
 
-## License
-
-This project is provided for educational purposes under the University of Toronto's ESC190 course.  
-You may reuse and adapt the code with proper attribution for academic or personal learning.
-
----
-
 ## 🙏 Acknowledgements
 
 > **Credit**: This project was originally designed by **Kevin Wayne**, and later **adapted to C by Michael Guerzhoy** for ESC190H1F – Programming Fundamentals, University of Toronto.
